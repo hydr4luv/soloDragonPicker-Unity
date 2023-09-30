@@ -14,7 +14,15 @@ public class EnemyScripts : MonoBehaviour
     public float chanceDirection = 0.1f;
     void Start()
     {
-        
+        Invoke("DropeEgg", 2f);
+    }
+
+    void DropeEgg()
+    {
+        Vector3 myVector = new Vector3(0.0f, 0.5f, 0.0f);
+        GameObject egg = Instantiate<GameObject>(enemyEgg);
+        egg.transform.position = transform.position + myVector;
+        Invoke("DropeEgg", timeBetweenEggDrops);
     }
 
     void Update() 
